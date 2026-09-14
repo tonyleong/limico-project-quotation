@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quotation 2026006 — Limico Concepts</title>
+  <meta name="description" content="Interactive quotation 2026006 for Limico Concepts. Select modules to calculate price. One invoice; payment terms stated on the invoice." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Serif:wght@500;600&amp;display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #15241c;
+      --muted: #5c6b62;
+      --line: #d5ddd6;
+      --sage: #dae8d4;
+      --sage-deep: #2c5a3c;
+      --sage-mid: #4a7c59;
+      --paper: #f4f1ea;
+      --card: #fffcf7;
+      --danger: #9b1c1c;
+      --shadow: 0 18px 50px rgba(21, 36, 28, 0.08);
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, #e7f0e1 0%, transparent 55%),
+        var(--paper);
+      line-height: 1.45;
+    }
+    .wrap {
+      width: min(1080px, calc(100% - 32px));
+      margin: 28px auto 120px;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .hint {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    button {
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+    button:hover { border-color: var(--sage-mid); }
+    button.primary {
+      background: var(--sage-deep);
+      border-color: var(--sage-deep);
+      color: #fff;
+    }
+    .sheet {
+      background: var(--card);
+      border: 1px solid #e4e0d6;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 36px 40px 28px;
+    }
+    header.letter {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: start;
+      padding-bottom: 22px;
+      border-bottom: 2px solid var(--ink);
+    }
+    .kicker {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sage-mid);
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+    h1 {
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-size: 34px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin: 0 0 8px;
+    }
+    .sub { margin: 0; color: var(--muted); font-size: 14px; max-width: 52ch; }
+    .meta {
+      width: 280px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .meta th, .meta td {
+      text-align: left;
+      padding: 4px 0;
+      vertical-align: top;
+    }
+    .meta th {
+      color: var(--muted);
+      font-weight: 500;
+      width: 92px;
+      padding-right: 10px;
+    }
+    .intro {
+      margin: 22px 0 8px;
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+    h3.block {
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin: 28px 0 10px;
+    }
+    table.items {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    table.items thead th {
+      background: var(--sage);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 10px;
+      border: 1px solid #c9d7c1;
+    }
+    table.items tbody td {
+      border: 1px solid var(--line);
+      padding: 12px 10px;
+      vertical-align: top;
+    }
+    table.items tbody tr {
+      cursor: pointer;
+      background: #fff;
+    }
+    table.items tbody tr:hover { background: #f8fbf6; }
+    table.items tbody tr.off { background: #f4f4f2; opacity: 0.55; }
+    table.items .c-check { width: 42px; text-align: center; }
+    table.items .c-no { width: 44px; text-align: center; font-weight: 600; }
+    table.items .c-price, table.items .c-time { width: 118px; text-align: right; white-space: nowrap; }
+    table.items .c-time { width: 130px; }
+    .item-name { font-weight: 700; margin: 0 0 6px; font-size: 14.5px; }
+    .item-desc { margin: 0; color: #314338; }
+    .item-desc ul { margin: 6px 0 0; padding-left: 18px; }
+    .item-desc li { margin: 3px 0; }
+    .note-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11.5px;
+      background: #eef4ea;
+      color: var(--sage-deep);
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-weight: 600;
+    }
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--sage-deep);
+    }
+    .totals {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 18px;
+      margin-top: 18px;
+      align-items: start;
+    }
+    .totals-note { font-size: 13px; color: var(--muted); }
+    .sum {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .sum th, .sum td {
+      border: 1px solid #c9d7c1;
+      padding: 8px 10px;
+    }
+    .sum th { background: var(--sage); text-align: left; font-weight: 600; }
+    .sum td { text-align: right; font-weight: 600; }
+    .sum .grand th, .sum .grand td {
+      background: var(--sage-deep);
+      color: #fff;
+      font-size: 16px;
+    }
+    .pay-block {
+      margin-top: 28px;
+    }
+    .pay-block p { margin: 0 0 10px; font-size: 13.5px; }
+    .pay-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 13.5px;
+    }
+    .pay-table th, .pay-table td {
+      border: 1px solid #c7c7c7;
+      padding: 8px 10px;
+    }
+    .pay-table th {
+      background: #dbdbdb;
+      text-align: center;
+    }
+    .pay-table td.pct { text-align: center; font-weight: 700; width: 90px; }
+    .pay-table td.amt { text-align: right; font-weight: 700; width: 130px; }
+    .clarify {
+      margin-top: 22px;
+      border: 1px dashed #c9b07a;
+      background: #fff8ea;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 13.5px;
+    }
+    .clarify h3 { margin: 0 0 8px; font-size: 14px; }
+    .clarify ol { margin: 0; padding-left: 20px; }
+    .clarify li { margin: 5px 0; }
+    .notes {
+      margin-top: 22px;
+      font-size: 13.5px;
+    }
+    .notes ul { margin: 6px 0 0; padding-left: 18px; }
+    .sign {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 36px;
+      font-size: 13.5px;
+    }
+    .sign .line {
+      margin-top: 48px;
+      border-top: 1px solid var(--ink);
+      padding-top: 8px;
+    }
+    .sticky {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(21, 36, 28, 0.94);
+      color: #fff;
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+      z-index: 20;
+    }
+    .sticky strong { font-size: 18px; }
+    .sticky span { color: #d7e4d6; font-size: 13px; }
+    .empty-warn {
+      display: none;
+      margin-top: 10px;
+      color: var(--danger);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    @media (max-width: 860px) {
+      .sheet { padding: 22px 16px; }
+      header.letter, .totals, .sign { grid-template-columns: 1fr; }
+      .meta { width: 100%; }
+      table.items .c-time { display: none; }
+    }
+    @media print {
+      body { background: #fff; }
+      .toolbar, .sticky, .no-print { display: none !important; }
+      .wrap { width: auto; margin: 0; }
+      .sheet { box-shadow: none; border: 0; padding: 0; }
+      table.items tbody tr.off { display: none; }
+      a { color: inherit; text-decoration: none; }
+      .sheet, table.items thead th, .sum th, .sum .grand th, .sum .grand td {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="toolbar no-print">
+      <p class="hint">Tick the modules you want. Totals and payment amounts update immediately. The URL keeps your selection so you can share one combination. Print this page to PDF when ready (unchecked rows are omitted).</p>
+      <div class="actions">
+        <button type="button" id="btnAll">Select all</button>
+        <button type="button" id="btnNone">Clear</button>
+        <button type="button" class="primary" id="btnPrint">Print / Save PDF</button>
+      </div>
+    </div>
+
+    <article class="sheet">
+      <header class="letter">
+        <div>
+          <p class="kicker">Software development quotation</p>
+          <h1>QUOTATION</h1>
+          <p class="sub">Interior Design Workflow Management, CRM &amp; Quotation System — additional modules. Priced on the same basis as the quotation dated 10 August 2025.</p>
+        </div>
+        <table class="meta">
+          <tr><th>Quote No.</th><td>2026006</td></tr>
+          <tr><th>Date</th><td>14 September 2026</td></tr>
+          <tr><th>Valid until</th><td>14 October 2026</td></tr>
+          <tr><th>Client</th><td>Limico Concepts Sdn Bhd</td></tr>
+          <tr><th>Project</th><td>Interior Design Workflow, CRM &amp; Quotation System</td></tr>
+        </table>
+      </header>
+
+      <p class="intro">Select any combination below. Price, timeline, and payment amounts follow the ticks — nothing is billed unless it is selected. One invoice will be issued for the selected total; payment terms are stated on that invoice.</p>
+
+      <h3 class="block">Modules</h3>
+      <table class="items">
+        <thead>
+          <tr>
+            <th class="c-check no-print"></th>
+            <th class="c-no">No.</th>
+            <th>Module / Feature</th>
+            <th class="c-price">Price (RM)</th>
+            <th class="c-time">Development time</th>
+          </tr>
+        </thead>
+        <tbody id="itemBody"></tbody>
+      </table>
+      <p class="empty-warn" id="emptyWarn">Select at least one module to form a quotation.</p>
+
+      <div class="totals">
+        <div class="totals-note">
+          Price includes development, testing, and deployment of the selected modules into the existing system. Work outside this scope will be quoted separately.
+        </div>
+        <table class="sum">
+          <tr>
+            <th>Selected modules</th>
+            <td id="countCell">0</td>
+          </tr>
+          <tr>
+            <th>Development time</th>
+            <td id="timeCell">—</td>
+          </tr>
+          <tr class="grand">
+            <th>Total</th>
+            <td id="totalCell">RM 0</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="pay-block">
+        <h3 class="block">Payment terms</h3>
+        <p>One invoice will be issued for the selected total. The invoice will state these payment terms:</p>
+        <table class="pay-table">
+          <thead>
+            <tr>
+              <th>%</th>
+              <th>Stage</th>
+              <th>When</th>
+              <th>Amount (RM)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="pct">30%</td>
+              <td>Deposit</td>
+              <td>Upon confirmation, then Design</td>
+              <td class="amt" data-pay="deposit">0.00</td>
+            </tr>
+            <tr>
+              <td class="pct">40%</td>
+              <td>Implementation</td>
+              <td>Upon design sign-off, then build</td>
+              <td class="amt" data-pay="impl">0.00</td>
+            </tr>
+            <tr>
+              <td class="pct">30%</td>
+              <td>Final</td>
+              <td>Upon go-live / acceptance</td>
+              <td class="amt" data-pay="final">0.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="clarify">
+        <h3>To confirm on Quotation ↔ Project Integration</h3>
+        <p style="margin:0 0 8px;">These are the working assumptions. Say if any should change before we start.</p>
+        <ol>
+          <li><strong>One official quotation per project.</strong> A project that already has a linked quotation cannot take a second official link. The staff member sees the existing quote number and is asked to <em>Save as Draft</em> (unlinked) instead.</li>
+          <li><strong>Link fills client details.</strong> Client name, phone, email, property / site, and account manager come from the project. Staff do not re-type them.</li>
+          <li><strong>Relink overwrites.</strong> Choosing a different project shows a warning: confirming replaces the quotation’s current client details with the new project’s details.</li>
+          <li><strong>Unlink keeps a snapshot.</strong> Removing the project link leaves the last copied client details on the quotation.</li>
+          <li><strong>Project status on the quote.</strong> The quotation edit page shows the linked project’s current workflow status.</li>
+          <li><strong>Copy New is not a revision.</strong> It opens a new draft with a new quote number. Line items, payment terms, notes, and client details are copied. Project link is copied only if that project is free; otherwise the copy stays a draft and the staff member is warned.</li>
+        </ol>
+      </div>
+
+      <div class="notes">
+        <h3 class="block" style="margin-top:0;">Notes</h3>
+        <ul>
+          <li>Price includes development, testing, and deployment of selected modules.</li>
+          <li>One invoice will be issued for the selected total. Payment terms on that invoice: 30% deposit upon confirmation (then Design), 40% upon design sign-off (then implementation), 30% upon go-live.</li>
+          <li>Warranty: 3 months bug-fix support after go-live of this phase.</li>
+          <li>Timeline depends on client feedback, approval cycles, and which modules are selected.</li>
+          <li>Additional features or changes outside this scope will be quoted separately.</li>
+        </ul>
+      </div>
+
+      <div class="sign">
+        <div>
+          <strong>Prepared by</strong>
+          <div class="line">
+            Leong Mun Hon<br />
+            <a href="mailto:munhonleong@gmail.com">munhonleong@gmail.com</a><br />
+            +6012-9850625
+          </div>
+        </div>
+        <div>
+          <strong>Accepted by</strong>
+          <div class="line">
+            Name / signature / date<br />
+            For Limico Concepts Sdn Bhd
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="sticky no-print" id="sticky">
+    <div>
+      <span id="stickyCount">0 modules selected</span><br />
+      <strong id="stickyTotal">RM 0</strong>
+    </div>
+    <div style="text-align:right">
+      <span>One invoice · 30% deposit · 40% implementation · 30% final</span><br />
+      <strong id="stickyPays">RM 0 · RM 0 · RM 0</strong>
+    </div>
+  </div>
+
+  <script>
+    const ITEMS = [
+      {
+        id: "pt",
+        no: 1,
+        name: "Payment Terms CMS",
+        price: 2400,
+        timeMin: 1,
+        timeMax: 2,
+        timeLabel: "1–2 weeks",
+        tag: "New staff feature",
+        html: `<p>A Payment Terms library for quotations. Staff manage reusable schedules instead of re-entering stages on every quote.</p>
+          <ul>
+            <li>Named presets (for example Standard, Progressive) with multiple stages: title, percentage, details, optional progressive flag.</li>
+            <li>Percentages must total 100%. Create, edit, delete, duplicate, set default, activate or deactivate.</li>
+            <li>On a quotation, staff pick a preset; the schedule is stored on that quote and printed on the PDF.</li>
+          </ul>`
+      },
+      {
+        id: "int",
+        no: 2,
+        name: "Quotation ↔ Project Integration",
+        price: 4200,
+        timeMin: 2,
+        timeMax: 4,
+        timeLabel: "2–4 weeks",
+        tag: "Link · unlink · overwrite warning",
+        html: `<p>Quotations and projects share one client record when linked, so staff do not re-enter details.</p>
+          <ul>
+            <li><strong>Link / unlink</strong> a project when creating or editing a quotation.</li>
+            <li><strong>Auto-fill:</strong> linked project copies client name, phone, email, property / site, and account manager onto the quotation.</li>
+            <li><strong>Relink warning:</strong> if the quotation already has client details, a popup asks to confirm. Relinking overwrites the current details.</li>
+            <li><strong>Project status</strong> is shown on the quotation modification page.</li>
+            <li><strong>Already linked:</strong> if that project already has a quotation, staff see the existing quote number and are advised to save this one as <em>Draft</em> (unlinked) rather than replace the official link.</li>
+          </ul>`
+      },
+      {
+        id: "clone",
+        no: 3,
+        name: "Clone Quotation (Copy New)",
+        price: 1400,
+        timeMin: 0.6,
+        timeMax: 1,
+        timeLabel: "3–5 days",
+        tag: "Details page + listing ⋮ menu",
+        html: `<p>Duplicate an existing quotation as a new independent draft — not a revision of the original.</p>
+          <ul>
+            <li><strong>Copy New</strong> button on the quotation details / edit page.</li>
+            <li><strong>Copy New</strong> in the three-dot menu on the quotation listing.</li>
+            <li>New quote number, status Draft. Copies line items, discounts, taxes, payment terms, notes, and client details.</li>
+          </ul>`
+      }
+    ];
+
+    const PAY = { deposit: 0.3, impl: 0.4, final: 0.3 };
+
+    const selected = new Set(ITEMS.map((i) => i.id));
+
+    function money(n) {
+      return "RM " + Math.round(n).toLocaleString("en-MY");
+    }
+    function money2(n) {
+      return n.toLocaleString("en-MY", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function parseSel() {
+      const q = new URLSearchParams(location.search).get("sel");
+      const h = location.hash.replace(/^#/, "");
+      const raw = q || h;
+      if (!raw) return;
+      const ids = raw.split(/[,+]/).map((s) => s.trim()).filter(Boolean);
+      if (!ids.length) return;
+      selected.clear();
+      ids.forEach((id) => {
+        if (ITEMS.some((i) => i.id === id)) selected.add(id);
+      });
+    }
+
+    function writeSel() {
+      const ids = ITEMS.filter((i) => selected.has(i.id)).map((i) => i.id).join(",");
+      const url = new URL(location.href);
+      if (ids) url.searchParams.set("sel", ids);
+      else url.searchParams.delete("sel");
+      history.replaceState(null, "", url);
+    }
+
+    function totals() {
+      const rows = ITEMS.filter((i) => selected.has(i.id));
+      const price = rows.reduce((s, i) => s + i.price, 0);
+      const tMin = rows.reduce((s, i) => s + i.timeMin, 0);
+      const tMax = rows.reduce((s, i) => s + i.timeMax, 0);
+      return { rows, price, tMin, tMax };
+    }
+
+    function timeLabel(tMin, tMax) {
+      if (!tMin && !tMax) return "—";
+      const fmt = (n) => (Number.isInteger(n) ? String(n) : n.toFixed(1).replace(/\.0$/, ""));
+      if (tMax <= 1.05) return "3–5 days";
+      return fmt(Math.ceil(tMin)) + "–" + fmt(Math.ceil(tMax)) + " weeks";
+    }
+
+    function renderItems() {
+      const body = document.getElementById("itemBody");
+      body.innerHTML = ITEMS.map((item) => {
+        const on = selected.has(item.id);
+        return `<tr class="${on ? "" : "off"}" data-id="${item.id}">
+          <td class="c-check no-print">
+            <input type="checkbox" ${on ? "checked" : ""} data-id="${item.id}" aria-label="Select ${item.name}" />
+          </td>
+          <td class="c-no">${item.no}</td>
+          <td>
+            <p class="item-name">${item.name}</p>
+            <div class="item-desc">${item.html}</div>
+            <span class="note-tag">${item.tag}</span>
+          </td>
+          <td class="c-price">${item.price.toLocaleString("en-MY")}</td>
+          <td class="c-time">${item.timeLabel}</td>
+        </tr>`;
+      }).join("");
+    }
+
+    function renderTotals() {
+      const { rows, price, tMin, tMax } = totals();
+      const d = price * PAY.deposit;
+      const i = price * PAY.impl;
+      const f = price * PAY.final;
+      document.getElementById("countCell").textContent = String(rows.length);
+      document.getElementById("timeCell").textContent = timeLabel(tMin, tMax);
+      document.getElementById("totalCell").textContent = money(price);
+      const payMap = { deposit: d, impl: i, final: f };
+      document.querySelectorAll("[data-pay]").forEach((el) => {
+        const v = payMap[el.getAttribute("data-pay")];
+        if (v == null) return;
+        el.textContent = el.closest(".pay-table") ? money2(v) : money(v);
+      });
+      document.getElementById("stickyCount").textContent =
+        rows.length + " module" + (rows.length === 1 ? "" : "s") + " selected";
+      document.getElementById("stickyTotal").textContent = money(price);
+      document.getElementById("stickyPays").textContent =
+        money(d) + " · " + money(i) + " · " + money(f);
+      document.getElementById("emptyWarn").style.display = rows.length ? "none" : "block";
+    }
+
+    function bind() {
+      document.getElementById("itemBody").addEventListener("click", (e) => {
+        const tr = e.target.closest("tr[data-id]");
+        if (!tr) return;
+        if (e.target.closest("a, button")) return;
+        const id = tr.getAttribute("data-id");
+        if (selected.has(id)) selected.delete(id);
+        else selected.add(id);
+        writeSel();
+        renderItems();
+        renderTotals();
+      });
+      document.getElementById("btnAll").onclick = () => {
+        ITEMS.forEach((i) => selected.add(i.id));
+        writeSel();
+        renderItems();
+        renderTotals();
+      };
+      document.getElementById("btnNone").onclick = () => {
+        selected.clear();
+        writeSel();
+        renderItems();
+        renderTotals();
+      };
+      document.getElementById("btnPrint").onclick = () => window.print();
+    }
+
+    parseSel();
+    renderItems();
+    renderTotals();
+    bind();
+  </script>
+</body>
+</html>
