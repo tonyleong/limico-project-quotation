@@ -214,17 +214,6 @@
     }
     .pay-table td.pct { text-align: center; font-weight: 700; width: 90px; }
     .pay-table td.amt { text-align: right; font-weight: 700; width: 130px; }
-    .clarify {
-      margin-top: 22px;
-      border: 1px dashed #c9b07a;
-      background: #fff8ea;
-      border-radius: 10px;
-      padding: 14px 16px;
-      font-size: 13.5px;
-    }
-    .clarify h3 { margin: 0 0 8px; font-size: 14px; }
-    .clarify ol { margin: 0; padding-left: 20px; }
-    .clarify li { margin: 5px 0; }
     .notes {
       margin-top: 22px;
       font-size: 13.5px;
@@ -385,19 +374,6 @@
         </table>
       </div>
 
-      <div class="clarify">
-        <h3>To confirm on Quotation ↔ Project Integration</h3>
-        <p style="margin:0 0 8px;">These are the working assumptions. Say if any should change before we start.</p>
-        <ol>
-          <li><strong>One official quotation per project.</strong> A project that already has a linked quotation cannot take a second official link. The staff member sees the existing quote number and is asked to <em>Save as Draft</em> (unlinked) instead.</li>
-          <li><strong>Link fills client details.</strong> Client name, phone, email, property / site, and account manager come from the project. Staff do not re-type them.</li>
-          <li><strong>Relink overwrites.</strong> Choosing a different project shows a warning: confirming replaces the quotation’s current client details with the new project’s details.</li>
-          <li><strong>Unlink keeps a snapshot.</strong> Removing the project link leaves the last copied client details on the quotation.</li>
-          <li><strong>Project status on the quote.</strong> The quotation edit page shows the linked project’s current workflow status.</li>
-          <li><strong>Copy New is not a revision.</strong> It opens a new draft with a new quote number. Line items, payment terms, notes, and client details are copied. Project link is copied only if that project is free; otherwise the copy stays a draft and the staff member is warned.</li>
-        </ol>
-      </div>
-
       <div class="notes">
         <h3 class="block" style="margin-top:0;">Notes</h3>
         <ul>
@@ -471,9 +447,10 @@
           <ul>
             <li><strong>Link / unlink</strong> a project when creating or editing a quotation.</li>
             <li><strong>Auto-fill:</strong> linked project copies client name, phone, email, property / site, and account manager onto the quotation.</li>
-            <li><strong>Relink warning:</strong> if the quotation already has client details, a popup asks to confirm. Relinking overwrites the current details.</li>
+            <li><strong>Relink warning:</strong> if the quotation already has client details, a popup asks to confirm. Relinking overwrites the current details with the new project's details.</li>
+            <li><strong>Unlink</strong> keeps the last copied client details on the quotation.</li>
             <li><strong>Project status</strong> is shown on the quotation modification page.</li>
-            <li><strong>Already linked:</strong> if that project already has a quotation, staff see the existing quote number and are advised to save this one as <em>Draft</em> (unlinked) rather than replace the official link.</li>
+            <li><strong>One official quotation per project:</strong> if that project already has a linked quotation, staff see the existing quote number and save this one as <em>Draft</em> (unlinked) instead.</li>
           </ul>`
       },
       {
@@ -490,6 +467,26 @@
             <li><strong>Copy New</strong> button on the quotation details / edit page.</li>
             <li><strong>Copy New</strong> in the three-dot menu on the quotation listing.</li>
             <li>New quote number, status Draft. Copies line items, discounts, taxes, payment terms, notes, and client details.</li>
+            <li>Project link is copied only if that project has no other official quotation; otherwise the copy stays an unlinked draft and staff are told why.</li>
+          </ul>`
+      },
+      {
+        id: "dup",
+        no: 4,
+        name: "Duplicate Project Warning",
+        price: 2400,
+        timeMin: 1,
+        timeMax: 2,
+        timeLabel: "1–2 weeks",
+        tag: "Create Project popup · confirm or cancel",
+        html: `<p>Warns staff before they create a project that may already exist, so the same lead is not entered twice.</p>
+          <ul>
+            <li><strong>Check on create:</strong> before saving a new project, the system looks for existing projects whose <strong>client name</strong>, <strong>contact number</strong>, or <strong>project title</strong> contains what was typed, or is contained in it (for example “Tan Ah Kow” and “Tan Ah Kow &amp; Wife” match each other). A match on any one of the three fields shows the popup.</li>
+            <li><strong>Formatting ignored:</strong> upper / lower case and extra spaces do not matter. Phone numbers match regardless of spaces, dashes, or a +60 / 0 prefix (012-345 6789 matches +60123456789).</li>
+            <li><strong>Sensible limits:</strong> names and titles are checked from 3 characters, phone numbers from 7 digits. Deleted projects are not included.</li>
+            <li><strong>Similar projects popup</strong> lists each match with created date, created by, project title, client name, and client phone number, and highlights which field matched. Up to 20 matches, closest first.</li>
+            <li><strong>Proceed or cancel:</strong> staff choose <em>Create anyway</em> to save the project, or <em>Cancel</em> to go back without creating it. The popup is a reminder and never blocks creation.</li>
+            <li><strong>Created by</strong> is now stored on every new project. Existing projects get it filled from the system's activity history.</li>
           </ul>`
       }
     ];
