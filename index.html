@@ -255,11 +255,287 @@
       font-weight: 600;
       font-size: 13px;
     }
+    /* ---------- Configurable module ---------- */
+    table.items tbody tr.has-sub td { border-bottom: 0; }
+    table.items tbody tr.sub td { border-top: 0; padding-top: 0; }
+    table.items tbody tr.sub { cursor: default; }
+    table.items tbody tr.sub:hover { background: #fff; }
+    table.items tbody tr.sub.off:hover { background: #f4f4f2; }
+    .cfg {
+      margin-top: 2px;
+      border: 1px solid #cfdcc9;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #f7fbf4 0%, #fdfcf8 100%);
+      padding: 14px 14px 6px;
+      cursor: default;
+    }
+    .cfg-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .cfg-head strong { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-deep); }
+    .cfg-head span { font-size: 12.5px; color: var(--muted); }
+    .cfg-group { margin-bottom: 12px; }
+    .cfg-group h4 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 7px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .cfg-group h4 .step {
+      display: inline-grid;
+      place-items: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--sage-deep);
+      color: #fff;
+      font-size: 11px;
+    }
+    .cfg-group.inactive h4 .step { background: #b9c2bb; }
+    .cfg-group .why { font-weight: 500; color: var(--muted); font-size: 12px; }
+    .opts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr));
+      gap: 8px;
+    }
+    button.opt {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-align: left;
+      border-radius: 10px;
+      padding: 10px 12px 10px 34px;
+      background: #fff;
+      border: 1px solid var(--line);
+      position: relative;
+      font-weight: 500;
+      line-height: 1.35;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    button.opt::before {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid #b5c4b9;
+      background: #fff;
+    }
+    button.opt.on {
+      border-color: var(--sage-deep);
+      box-shadow: 0 0 0 3px rgba(44, 90, 60, 0.12);
+    }
+    button.opt.on::before {
+      border-color: var(--sage-deep);
+      background: radial-gradient(circle, var(--sage-deep) 0 3px, #fff 3.5px);
+    }
+    button.opt:disabled { opacity: 0.45; cursor: not-allowed; }
+    .opt-title { font-weight: 700; font-size: 13.5px; }
+    .opt-desc { font-size: 12px; color: var(--muted); }
+    .opt-price { font-size: 12.5px; font-weight: 700; color: var(--sage-deep); }
+    .opt-price.zero { color: var(--muted); font-weight: 600; }
+    .cfg-total {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      border-top: 1px dashed #cfdcc9;
+      margin: 4px -14px 0;
+      padding: 9px 14px 8px;
+      font-size: 13px;
+    }
+    .cfg-total b { color: var(--sage-deep); }
+    .cfg-print { display: none; margin: 10px 0 0; font-size: 13px; }
+    .scope { margin-top: 14px; }
+    .scope h5 {
+      margin: 12px 0 4px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage-mid);
+    }
+    .scope ul { margin: 0; padding-left: 18px; }
+    .scope li { margin: 3px 0; }
+
+    /* ---------- Illustrations ---------- */
+    .mocks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      gap: 12px;
+      margin-top: 16px;
+      cursor: default;
+    }
+    .mock {
+      font-family: Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f6f7f8;
+      border: 1px solid #e3e6e8;
+      border-radius: 12px;
+      padding: 12px;
+      color: #0a0a0a;
+      font-size: 12px;
+      break-inside: avoid;
+    }
+    .mock.wide { grid-column: 1 / -1; }
+    .mock-cap {
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 9px;
+    }
+    .m-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; }
+    .m-tabs { display: flex; gap: 4px; background: #eef0f2; border-radius: 8px; padding: 3px; margin-bottom: 8px; }
+    .m-tabs span { flex: 1; text-align: center; padding: 5px 4px; border-radius: 6px; color: #6b7280; white-space: nowrap; }
+    .m-tabs span.on { background: #fff; color: #0a0a0a; font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+    .m-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px 10px;
+      align-items: center;
+      padding: 9px 10px;
+      border-bottom: 1px solid #eef0f2;
+    }
+    .m-row:last-child { border-bottom: 0; }
+    .m-row.idle { background: #fffaf0; box-shadow: inset 3px 0 0 #f59e0b; }
+    .m-row b { display: block; font-size: 12.5px; }
+    .m-row small { color: #6b7280; }
+    .m-fu { color: #6b7280; font-size: 11px; grid-column: 1 / -1; }
+    .m-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .m-chip.amber { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .m-chip.red { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .m-chip.grey { background: #f3f4f6; color: #6b7280; }
+    .m-count { background: #f59e0b; color: #fff; border-radius: 999px; padding: 0 6px; font-size: 10px; margin-left: 4px; }
+    .m-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      margin-bottom: 8px;
+    }
+    .m-logo { font-weight: 800; letter-spacing: 0.06em; color: #3f8f3a; }
+    .m-right { display: flex; align-items: center; gap: 10px; }
+    .m-bell { position: relative; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 8px; background: #f3f4f6; }
+    .m-bell svg { width: 16px; height: 16px; }
+    .m-badge {
+      position: absolute;
+      top: -4px;
+      right: -5px;
+      background: #dc2626;
+      color: #fff;
+      font-size: 9.5px;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 0 5px;
+      border: 2px solid #fff;
+    }
+    .m-avatar { width: 24px; height: 24px; border-radius: 50%; background: #6d5dfc; }
+    .m-pill { background: #0a0a0a; color: #fff; border-radius: 6px; padding: 3px 8px; font-weight: 600; font-size: 11px; }
+    .m-panel { margin-left: auto; width: min(100%, 320px); box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+    .m-panel-head { display: flex; justify-content: space-between; align-items: center; padding: 9px 11px; border-bottom: 1px solid #eef0f2; }
+    .m-panel-head a { color: #2563eb; font-size: 11px; text-decoration: none; }
+    .m-note { display: grid; grid-template-columns: 8px 1fr; gap: 8px; padding: 9px 11px; border-bottom: 1px solid #eef0f2; }
+    .m-note:last-child { border-bottom: 0; }
+    .m-note .dot { width: 8px; height: 8px; border-radius: 50%; background: #2563eb; margin-top: 4px; }
+    .m-note.read .dot { background: transparent; }
+    .m-note.read { color: #6b7280; }
+    .m-note small { display: block; color: #6b7280; margin-top: 2px; }
+    .m-type { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #b45309; }
+    .m-flow { display: grid; grid-template-columns: 1fr 28px 1.3fr; gap: 8px; align-items: center; }
+    .m-flow > *, .m-cols > *, .mocks > * { min-width: 0; }
+    .m-url { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .m-flow.m-cms { grid-template-columns: 1fr 1.4fr; align-items: start; }
+    .m-arrow { text-align: center; font-size: 18px; color: #9ca3af; }
+    .m-dialog { padding: 10px; }
+    .m-ticket {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 700;
+      font-size: 11px;
+      color: #1d4ed8;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 2px 7px;
+    }
+    .m-ticket.pulse { box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18); }
+    .m-line { height: 7px; border-radius: 4px; background: #e5e7eb; margin: 6px 0; }
+    .m-line.s { width: 55%; }
+    .m-line.m { width: 75%; }
+    .m-browser-bar { display: flex; align-items: center; gap: 5px; padding: 6px 8px; border-bottom: 1px solid #eef0f2; }
+    .m-browser-bar i { width: 7px; height: 7px; border-radius: 50%; background: #e5e7eb; display: block; }
+    .m-url { margin-left: 6px; flex: 1; background: #f3f4f6; border-radius: 5px; padding: 2px 8px; color: #6b7280; font-size: 10.5px; }
+    .m-page { padding: 10px; }
+    .m-crumb { color: #6b7280; font-size: 10.5px; margin-bottom: 4px; }
+    .m-cols { display: grid; grid-template-columns: 1.4fr 1fr; gap: 8px; margin-top: 8px; }
+    .m-box { border: 1px solid #eef0f2; border-radius: 8px; padding: 7px 8px; }
+    .m-box h6 { margin: 0 0 4px; font-size: 10.5px; color: #6b7280; font-weight: 600; }
+    .m-field { display: flex; align-items: center; gap: 8px; padding: 10px 11px; }
+    .m-input { border: 1px solid #d1d5db; border-radius: 6px; padding: 4px 10px; font-weight: 700; background: #fff; }
+    .m-toggle { width: 28px; height: 16px; border-radius: 999px; background: #16a34a; position: relative; margin-left: auto; }
+    .m-toggle::after { content: ""; position: absolute; right: 2px; top: 2px; width: 12px; height: 12px; border-radius: 50%; background: #fff; }
+    .m-btn { background: #0a0a0a; color: #fff; border-radius: 6px; padding: 4px 10px; font-weight: 600; font-size: 11px; }
+    .m-hist { border-top: 1px solid #eef0f2; padding: 8px 11px; color: #6b7280; font-size: 11px; }
+    .m-hist div + div { margin-top: 3px; }
+    .m-timeline { margin-top: 8px; }
+    .m-tl { display: grid; grid-template-columns: 92px 1fr; gap: 8px; align-items: center; margin: 7px 0; font-size: 11px; }
+    .m-track { position: relative; height: 18px; background: #eef0f2; border-radius: 999px; }
+    .m-track .fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: #d1fae5; }
+    .m-track .mark {
+      position: absolute;
+      top: -3px;
+      transform: translateX(-50%);
+      font-size: 10px;
+      font-weight: 700;
+      background: #fff;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      padding: 1px 6px;
+      white-space: nowrap;
+    }
+    .m-track .mark.now { border-color: #2563eb; color: #1d4ed8; }
+    .m-track .mark.bell { border-color: #f59e0b; color: #92400e; background: #fef3c7; }
+    .m-legend { color: #6b7280; font-size: 10.5px; margin-top: 4px; }
+    .m-mail-head { padding: 9px 11px; border-bottom: 1px solid #eef0f2; }
+    .m-mail-head small { color: #6b7280; }
+    .m-mail-subj { font-weight: 700; font-size: 13px; margin-top: 4px; }
+    .m-mail-body { padding: 10px 11px; background: #fafafa; border-radius: 0 0 10px 10px; }
+    .m-mail-body p { margin: 6px 0 8px; }
+    .m-mail-item { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: #fff; border: 1px solid #eef0f2; border-radius: 8px; padding: 7px 9px; margin-top: 6px; }
+    .m-mail-item small { display: block; color: #6b7280; }
+    .mock-foot { font-family: "IBM Plex Sans", sans-serif; color: var(--muted); font-size: 11.5px; margin-top: 8px; }
+
     @media (max-width: 860px) {
       .sheet { padding: 22px 16px; }
       header.letter, .totals, .sign { grid-template-columns: 1fr; }
       .meta { width: 100%; }
       table.items .c-time { display: none; }
+      .m-flow, .m-flow.m-cms { grid-template-columns: 1fr; }
+      table.items tbody tr.sub td.c-check { display: none; }
+      table.items tbody tr.sub td[colspan] { padding: 0 8px 12px; }
+      .m-tabs span { padding: 5px 2px; font-size: 11px; }
+      .m-tl { grid-template-columns: 1fr; gap: 4px; }
+      .m-arrow { transform: rotate(90deg); }
+      .mocks { grid-template-columns: 1fr; }
     }
     @media print {
       body { background: #fff; }
@@ -267,6 +543,9 @@
       .wrap { width: auto; margin: 0; }
       .sheet { box-shadow: none; border: 0; padding: 0; }
       table.items tbody tr.off { display: none; }
+      .cfg { border: 0; background: none; padding: 0; }
+      .cfg-head, .cfg-group, .cfg-total { display: none; }
+      .cfg-print { display: block; }
       a { color: inherit; text-decoration: none; }
       .sheet, table.items thead th, .sum th, .sum .grand th, .sum .grand td {
         -webkit-print-color-adjust: exact;
@@ -488,8 +767,331 @@
             <li><strong>Proceed or cancel:</strong> staff choose <em>Create anyway</em> to save the project, or <em>Cancel</em> to go back without creating it. The popup is a reminder and never blocks creation.</li>
             <li><strong>Created by</strong> is now stored on every new project. Existing projects get it filled from the system's activity history.</li>
           </ul>`
+      },
+      {
+        id: "fu",
+        no: 5,
+        name: "Lead Follow-up Reminder",
+        configurable: true,
+        tag: "Configurable · price follows the options chosen",
+        html: `<p>Reminds the sales person when a lead they have followed up on goes quiet, so no lead is forgotten after the first calls.</p>
+          <ul>
+            <li><strong>Which leads:</strong> every lead in <em>Lead</em> status that has at least one follow-up.</li>
+            <li><strong>When a lead is idle:</strong> nothing has changed on it (no new follow-up, status change, appointment, remark, or edit) for the reminder period after its last follow-up or update. Standard period: 14 days.</li>
+            <li><strong>Who is reminded:</strong> only the sales person assigned to the lead.</li>
+            <li><strong>Clears itself:</strong> once the sales person follows up or updates the lead, the reminder clears and the clock restarts. If the lead goes quiet again, a new reminder is raised.</li>
+          </ul>`
       }
     ];
+
+    /* Options for configurable module "fu". Prices and weeks add to the module total. */
+    const FU_GROUPS = [
+      {
+        key: "style",
+        title: "How sales are reminded",
+        options: [
+          {
+            id: "chip",
+            label: "Idle chip in leads table",
+            desc: "Coloured chip on the lead row. Seen when sales open the Lead tab.",
+            price: 1400, tMin: 0.6, tMax: 1,
+            scope: [
+              "Amber <strong>Idle N days</strong> chip on each idle lead in the leads table, with the row edge highlighted. The day count updates daily.",
+              "The <em>Lead</em> tab shows how many of the sales person's leads are idle, and an <strong>Idle first</strong> sort lists them at the top.",
+              "Shown on the assigned sales person's leads. Managers and owners see the same chip when viewing all leads; nothing is sent to them."
+            ]
+          },
+          {
+            id: "notify",
+            label: "Notification center",
+            desc: "Bell icon in the header with unread count. Reaches sales on any page.",
+            price: 3600, tMin: 2, tMax: 3,
+            scope: [
+              "<strong>Bell icon</strong> in the header with an unread count, on every page.",
+              "Clicking the bell opens a panel listing reminders newest first: project, client, days idle, and last follow-up date. Unread reminders are marked; <strong>Mark all as read</strong> clears them.",
+              "The system checks leads automatically once a day (early morning). Each idle period raises <strong>one</strong> reminder; it does not repeat every day.",
+              "Clicking a reminder marks it read and opens the lead (see step 3).",
+              "Built to carry other notification types later. Follow-up reminder is the only type in this module; new types are quoted separately."
+            ]
+          },
+          {
+            id: "both",
+            label: "Both",
+            desc: "Notification center plus the idle chip in the leads table.",
+            price: 4400, tMin: 2.4, tMax: 3.4,
+            scope: "chip+notify"
+          }
+        ]
+      },
+      {
+        key: "email",
+        title: "Also send by email",
+        needs: (c) => c.style !== "chip",
+        why: "Applies to the notification center",
+        options: [
+          {
+            id: "noemail",
+            label: "Bell only",
+            desc: "Reminders appear in the notification center only.",
+            price: 0, tMin: 0, tMax: 0,
+            scope: [
+              "Reminders are shown in the notification center only. No emails are sent."
+            ]
+          },
+          {
+            id: "email",
+            label: "Bell + email",
+            desc: "Sales also receive one daily email listing their idle leads.",
+            price: 1800, tMin: 0.8, tMax: 1.2,
+            scope: [
+              "Each sales person also receives <strong>one email per day</strong> (early morning) listing the leads that became idle for them, so a busy inbox gets one message, not one per lead. No email is sent on days with nothing new.",
+              "Each lead in the email shows project, client, phone, days idle, and last follow-up date, with a button that opens the lead (see step 3).",
+              "Sent to the email address the sales person signs in with, from Limico's company domain (for example reminders@&lt;limico domain&gt;), with Limico branding.",
+              "Includes setting up the email sending service and verifying Limico's domain so emails land in the inbox, not spam. Limico provides access to its domain's DNS settings for this.",
+              "<strong>Sending limit:</strong> up to <strong>3,000 emails per month</strong> and <strong>100 emails per day</strong>. With one daily email per sales person, this covers a sales team of up to 100 people. Sending more than this is a separate enhancement, quoted separately."
+            ]
+          }
+        ]
+      },
+      {
+        key: "view",
+        title: "Where a reminder opens",
+        needs: (c) => c.style !== "chip",
+        why: "Applies to the notification center",
+        options: [
+          {
+            id: "popup",
+            label: "Current details popup",
+            desc: "Reuse the existing lead popup. No new page.",
+            price: 0, tMin: 0, tMax: 0,
+            scope: [
+              "Clicking a reminder goes to the leads page and opens the existing details popup for that lead."
+            ]
+          },
+          {
+            id: "page",
+            label: "Full ticket page + ticket number",
+            desc: "Jira-style ticket number on the popup, linking to a full-screen ticket page.",
+            price: 3200, tMin: 1.5, tMax: 2.5,
+            scope: [
+              "Every project gets a <strong>ticket number</strong> (for example LIM-1042). Existing projects are numbered in order of creation.",
+              "The details popup shows the ticket number at the top. Clicking it opens the <strong>full ticket page</strong>.",
+              "Full ticket page: the same information and actions as the popup, laid out on a full screen, with its own link that colleagues can open (login required).",
+              "Clicking a reminder in the notification center opens the full ticket page directly."
+            ]
+          }
+        ]
+      },
+      {
+        key: "days",
+        title: "Reminder period",
+        options: [
+          {
+            id: "fixed",
+            label: "Fixed at 14 days",
+            desc: "Set in the system. Changing it later needs a code update.",
+            price: 0, tMin: 0, tMax: 0,
+            scope: [
+              "Reminder period fixed at <strong>14 days</strong>. Changing it later needs a code update."
+            ]
+          },
+          {
+            id: "cms",
+            label: "Manager setting (CMS)",
+            desc: "Managers set the number of days and can switch reminders off.",
+            price: 1400, tMin: 0.4, tMax: 0.6,
+            scope: [
+              "New CMS page <strong>Follow-up Reminder</strong> for managers and owners: set the reminder period (1–90 days) and switch reminders on or off.",
+              "A change applies to <strong>all open leads</strong> from the next daily check. Each lead is still measured from its own last follow-up or update, not from when it was created or when the setting changed.",
+              "<strong>Shorter period</strong> (for example 14 → 7 days): leads already idle 7 days or more are reminded at the next daily check, once each.",
+              "<strong>Longer period</strong> (for example 14 → 21 days): leads not yet reminded wait until day 21. Reminders already sent stay in the list until read.",
+              "Change history on the CMS page: who changed the period, from what to what, and when."
+            ]
+          }
+        ]
+      }
+    ];
+
+    const FU_DEFAULT = { style: "notify", email: "noemail", view: "popup", days: "fixed" };
+    const fu = { ...FU_DEFAULT };
+
+    const BELL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>`;
+
+    const MOCKS = {
+      chip: `<div class="mock">
+          <div class="mock-cap">Leads table · idle chip</div>
+          <div class="m-tabs"><span>Pending</span><span class="on">Lead <span class="m-count">3 idle</span></span><span>Quotation</span><span>Potential</span></div>
+          <div class="m-card">
+            <div class="m-row idle">
+              <div><b>Tan residence, Mont Kiara</b><small>Mr Tan · 012 345 6789</small></div>
+              <span class="m-chip amber">⏱ Idle 16 days</span>
+              <div class="m-fu">Follow-ups (2/3) · last on 24 Sep 2026</div>
+            </div>
+            <div class="m-row idle">
+              <div><b>Wong condo, Cheras</b><small>Ms Wong · 016 222 1188</small></div>
+              <span class="m-chip amber">⏱ Idle 14 days</span>
+              <div class="m-fu">Follow-ups (1/3) · last on 26 Sep 2026</div>
+            </div>
+            <div class="m-row">
+              <div><b>Lim terrace, Puchong</b><small>Mr Lim · 017 555 0420</small></div>
+              <span class="m-chip grey">Updated 2 days ago</span>
+              <div class="m-fu">Follow-ups (1/3) · last on 08 Oct 2026</div>
+            </div>
+          </div>
+        </div>`,
+      notify: `<div class="mock">
+          <div class="mock-cap">Header · notification center</div>
+          <div class="m-card m-header">
+            <span class="m-logo">LIMICO</span>
+            <span class="m-right"><span class="m-bell">${BELL}<span class="m-badge">2</span></span><span class="m-avatar"></span><span class="m-pill">Sales</span></span>
+          </div>
+          <div class="m-card m-panel">
+            <div class="m-panel-head"><b>Notifications</b><a>Mark all as read</a></div>
+            <div class="m-note">
+              <span class="dot"></span>
+              <div><span class="m-type">Follow-up reminder</span><br /><b>Tan residence, Mont Kiara</b> has had no update for 14 days.<small>Mr Tan · last follow-up 24 Sep · 08 Oct, 8:00 am</small></div>
+            </div>
+            <div class="m-note">
+              <span class="dot"></span>
+              <div><span class="m-type">Follow-up reminder</span><br /><b>Wong condo, Cheras</b> has had no update for 14 days.<small>Ms Wong · last follow-up 26 Sep · today, 8:00 am</small></div>
+            </div>
+            <div class="m-note read">
+              <span class="dot"></span>
+              <div><span class="m-type">Follow-up reminder</span><br /><b>Ooi bungalow, Ampang</b> has had no update for 14 days.<small>Read · 02 Oct</small></div>
+            </div>
+          </div>
+        </div>`,
+      popup: `<div class="mock">
+          <div class="mock-cap">Click reminder → existing popup</div>
+          <div class="m-flow">
+            <div class="m-card m-note"><span class="dot"></span><div><span class="m-type">Follow-up reminder</span><br /><b>Tan residence</b><small>14 days idle</small></div></div>
+            <div class="m-arrow">→</div>
+            <div class="m-card m-dialog"><b>Tan residence, Mont Kiara</b><div class="m-line m"></div><div class="m-line s"></div><div class="m-line"></div><div class="m-line s"></div></div>
+          </div>
+          <div class="mock-foot">Opens the leads page with the current details popup. No change to the popup.</div>
+        </div>`,
+      page: `<div class="mock wide">
+          <div class="mock-cap">Ticket number on popup → full ticket page</div>
+          <div class="m-flow">
+            <div class="m-card m-dialog">
+              <span class="m-ticket pulse">LIM-1042 ↗</span>
+              <div style="margin-top:6px"><b>Tan residence, Mont Kiara</b></div>
+              <div class="m-line m"></div><div class="m-line s"></div><div class="m-line"></div>
+              <div class="mock-foot" style="margin-top:4px">Details popup (current), now with ticket number</div>
+            </div>
+            <div class="m-arrow">→</div>
+            <div class="m-card">
+              <div class="m-browser-bar"><i></i><i></i><i></i><span class="m-url">limico-system / tickets / LIM-1042</span></div>
+              <div class="m-page">
+                <div class="m-crumb">Sales › Leads › LIM-1042</div>
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b style="font-size:13px">Tan residence, Mont Kiara</b><span class="m-chip amber">Lead · idle 16 days</span></div>
+                <div class="m-cols">
+                  <div class="m-box"><h6>Details</h6><div class="m-line m"></div><div class="m-line s"></div><div class="m-line"></div><div class="m-line s"></div></div>
+                  <div class="m-box"><h6>Follow-ups &amp; activity</h6><div class="m-line"></div><div class="m-line m"></div><div class="m-line s"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mock-foot">The notification center opens this page directly. The same page opens from the ticket number on the popup.</div>
+        </div>`,
+      noemail: "",
+      email: `<div class="mock">
+          <div class="mock-cap">Daily email · one per sales person</div>
+          <div class="m-card m-mail">
+            <div class="m-mail-head">
+              <div><b>Limico Reminders</b> <small>&lt;reminders@limico…&gt;</small></div>
+              <small>To: you · 8:00 am</small>
+              <div class="m-mail-subj">2 leads need a follow-up today</div>
+            </div>
+            <div class="m-mail-body">
+              <span class="m-logo">LIMICO</span>
+              <p>Hi Sarah, these leads have had no update for 14 days:</p>
+              <div class="m-mail-item"><div><b>Tan residence, Mont Kiara</b><small>Mr Tan · 012 345 6789 · last follow-up 24 Sep</small></div><span class="m-btn">Open lead</span></div>
+              <div class="m-mail-item"><div><b>Wong condo, Cheras</b><small>Ms Wong · 016 222 1188 · last follow-up 26 Sep</small></div><span class="m-btn">Open lead</span></div>
+            </div>
+          </div>
+        </div>`,
+      fixed: "",
+      cms: `<div class="mock wide">
+          <div class="mock-cap">CMS · Follow-up Reminder (managers and owners)</div>
+          <div class="m-flow m-cms">
+            <div class="m-card">
+              <div class="m-field"><b>Reminders</b><span class="m-toggle"></span></div>
+              <div class="m-field" style="border-top:1px solid #eef0f2">Remind after <span class="m-input">7</span> days with no update <span class="m-btn" style="margin-left:auto">Save</span></div>
+              <div class="m-hist"><div>03 Oct 2026 · Manager A · 14 → 7 days</div><div>15 Sep 2026 · Owner · set to 14 days</div></div>
+            </div>
+            <div class="m-card" style="padding:10px 11px">
+              <b>What happens when the period changes from 14 to 7 days on day 10</b>
+              <div class="m-timeline">
+                <div class="m-tl"><span>Lead idle 10 days</span><div class="m-track"><div class="fill" style="width:48%"></div><span class="mark bell" style="left:48%">reminded next check</span></div></div>
+                <div class="m-tl"><span>Lead idle 3 days</span><div class="m-track"><div class="fill" style="width:14%"></div><span class="mark now" style="left:14%">day 3</span><span class="mark bell" style="left:33%">day 7</span></div></div>
+                <div class="m-tl"><span>Already reminded</span><div class="m-track"><div class="fill" style="width:80%"></div><span class="mark" style="left:80%">no repeat</span></div></div>
+              </div>
+              <div class="m-legend">Each lead is measured from its own last follow-up or update. Changing the setting never resets that clock.</div>
+            </div>
+          </div>
+        </div>`
+    };
+
+    function fuActive(group) {
+      return !group.needs || group.needs(fu);
+    }
+    function fuChosen() {
+      return FU_GROUPS.filter(fuActive).map((g) => g.options.find((o) => o.id === fu[g.key]));
+    }
+    function fuScope(opt) {
+      if (opt.scope !== "chip+notify") return opt.scope;
+      const style = FU_GROUPS[0].options;
+      return style.find((o) => o.id === "notify").scope.concat(style.find((o) => o.id === "chip").scope);
+    }
+    function weeksLabel(tMin, tMax) {
+      if (tMax <= 1.05) return "3–5 days";
+      const lo = Math.ceil(tMin);
+      const hi = Math.ceil(tMax);
+      return lo === hi ? hi + " weeks" : lo + "–" + hi + " weeks";
+    }
+    function itemCost(item) {
+      if (!item.configurable) return { price: item.price, tMin: item.timeMin, tMax: item.timeMax, label: item.timeLabel };
+      const c = fuChosen().reduce(
+        (s, o) => ({ price: s.price + o.price, tMin: s.tMin + o.tMin, tMax: s.tMax + o.tMax }),
+        { price: 0, tMin: 0, tMax: 0 }
+      );
+      return { ...c, label: weeksLabel(c.tMin, c.tMax) };
+    }
+    function renderConfig(item) {
+      const cost = itemCost(item);
+      const chosen = fuChosen();
+      const groups = FU_GROUPS.map((g, gi) => {
+        const active = fuActive(g);
+        const opts = g.options.map((o) => {
+          const on = active && fu[g.key] === o.id;
+          const price = o.price
+            ? `<span class="opt-price">${gi === 0 ? "" : "+ "}RM ${o.price.toLocaleString("en-MY")}</span>`
+            : `<span class="opt-price zero">Included</span>`;
+          return `<button type="button" class="opt ${on ? "on" : ""}" data-fu-key="${g.key}" data-fu-val="${o.id}" ${active ? "" : "disabled"} aria-pressed="${on}">
+              <span class="opt-title">${o.label}</span>
+              <span class="opt-desc">${o.desc}</span>
+              ${price}
+            </button>`;
+        }).join("");
+        return `<div class="cfg-group ${active ? "" : "inactive"}">
+            <h4><span class="step">${gi + 1}</span>${g.title}${!active && g.why ? ` <span class="why">— ${g.why}</span>` : ""}</h4>
+            <div class="opts">${opts}</div>
+          </div>`;
+      }).join("");
+      const scope = chosen.map((o) => `<h5>${o.label}</h5><ul>${fuScope(o).map((li) => `<li>${li}</li>`).join("")}</ul>`).join("");
+      const mockKeys = chosen.flatMap((o) => (o.id === "both" ? ["notify", "chip"] : [o.id]));
+      const mocks = mockKeys.map((k) => MOCKS[k]).filter(Boolean).join("");
+      return `<div class="cfg">
+          <div class="cfg-head"><strong>Configure this module</strong><span>Pick one option in each step</span></div>
+          ${groups}
+          <div class="cfg-total"><span>Your configuration</span><span><b>RM ${cost.price.toLocaleString("en-MY")}</b> · ${cost.label}</span></div>
+          <p class="cfg-print"><strong>Configuration:</strong> ${chosen.map((o) => o.label).join(" · ")}</p>
+        </div>
+        <div class="scope">${scope}</div>
+        <div class="mocks">${mocks}</div>
+        <p class="mock-foot">Illustrations explain the behaviour. Final screens follow the existing system's look.</p>`;
+    }
 
     const PAY = { deposit: 0.3, impl: 0.4, final: 0.3 };
 
@@ -515,19 +1117,30 @@
       });
     }
 
+    function parseFu() {
+      const raw = new URLSearchParams(location.search).get("fu");
+      if (!raw) return;
+      raw.split(".").forEach((val) => {
+        const g = FU_GROUPS.find((grp) => grp.options.some((o) => o.id === val));
+        if (g) fu[g.key] = val;
+      });
+    }
+
     function writeSel() {
       const ids = ITEMS.filter((i) => selected.has(i.id)).map((i) => i.id).join(",");
       const url = new URL(location.href);
       if (ids) url.searchParams.set("sel", ids);
       else url.searchParams.delete("sel");
+      url.searchParams.set("fu", FU_GROUPS.map((g) => fu[g.key]).join("."));
       history.replaceState(null, "", url);
     }
 
     function totals() {
       const rows = ITEMS.filter((i) => selected.has(i.id));
-      const price = rows.reduce((s, i) => s + i.price, 0);
-      const tMin = rows.reduce((s, i) => s + i.timeMin, 0);
-      const tMax = rows.reduce((s, i) => s + i.timeMax, 0);
+      const costs = rows.map(itemCost);
+      const price = costs.reduce((s, c) => s + c.price, 0);
+      const tMin = costs.reduce((s, c) => s + c.tMin, 0);
+      const tMax = costs.reduce((s, c) => s + c.tMax, 0);
       return { rows, price, tMin, tMax };
     }
 
@@ -542,7 +1155,8 @@
       const body = document.getElementById("itemBody");
       body.innerHTML = ITEMS.map((item) => {
         const on = selected.has(item.id);
-        return `<tr class="${on ? "" : "off"}" data-id="${item.id}">
+        const cost = itemCost(item);
+        return `<tr class="${on ? "" : "off"}${item.configurable ? " has-sub" : ""}" data-id="${item.id}">
           <td class="c-check no-print">
             <input type="checkbox" ${on ? "checked" : ""} data-id="${item.id}" aria-label="Select ${item.name}" />
           </td>
@@ -552,9 +1166,12 @@
             <div class="item-desc">${item.html}</div>
             <span class="note-tag">${item.tag}</span>
           </td>
-          <td class="c-price">${item.price.toLocaleString("en-MY")}</td>
-          <td class="c-time">${item.timeLabel}</td>
-        </tr>`;
+          <td class="c-price">${cost.price.toLocaleString("en-MY")}</td>
+          <td class="c-time">${cost.label}</td>
+        </tr>${item.configurable ? `<tr class="sub ${on ? "" : "off"}" data-id="${item.id}">
+          <td class="c-check no-print"></td>
+          <td colspan="4">${renderConfig(item)}</td>
+        </tr>` : ""}`;
       }).join("");
     }
 
@@ -584,7 +1201,19 @@
       document.getElementById("itemBody").addEventListener("click", (e) => {
         const tr = e.target.closest("tr[data-id]");
         if (!tr) return;
-        if (e.target.closest("a, button")) return;
+        const opt = e.target.closest("button.opt");
+        if (opt) {
+          fu[opt.dataset.fuKey] = opt.dataset.fuVal;
+          selected.add(tr.getAttribute("data-id"));
+          const y = opt.getBoundingClientRect().top;
+          writeSel();
+          renderItems();
+          renderTotals();
+          const again = document.querySelector(`button.opt[data-fu-key="${opt.dataset.fuKey}"][data-fu-val="${opt.dataset.fuVal}"]`);
+          if (again) window.scrollBy(0, again.getBoundingClientRect().top - y);
+          return;
+        }
+        if (tr.classList.contains("sub") || e.target.closest("a, button")) return;
         const id = tr.getAttribute("data-id");
         if (selected.has(id)) selected.delete(id);
         else selected.add(id);
@@ -608,6 +1237,7 @@
     }
 
     parseSel();
+    parseFu();
     renderItems();
     renderTotals();
     bind();
